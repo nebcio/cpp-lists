@@ -1,0 +1,12 @@
+# MAKEFILE list 4 windows
+all: list4.exe list4.obj cleanup
+.PHONY: all
+
+list4.exe: list4.obj
+	link /DEBUG /OUT:list4.exe list4.obj
+
+list4.obj: list4.cpp
+	cl /std:c++latest /EHsc /c /Zi /W4 /WX /openmp:experimental /Fo:list4.obj list4.cpp 
+
+cleanup:
+	DEL *.obj *.pdb *.ilk
